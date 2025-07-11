@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[2]:
 
 
 import streamlit as st
@@ -26,7 +26,9 @@ st.write(f"選択されたエリア: {selected_area}")
 st.write(f"店舗数: {len(filtered_df)} 件")
 
 st.dataframe(
-    filtered_df[["タイトル", "エリア", "cz_sp_table_URL"]].rename(columns={"cz_sp_table_URL": "連絡先"})
+    filtered_df[["タイトル", "エリア", "cz_sp_table_URL"]]
+    .rename(columns={"cz_sp_table_URL": "連絡先"})
+    .set_index(pd.Series(range(1, len(filtered_df) + 1)))
 )
 
 area_counts = filtered_df["簡易エリア"].value_counts().sort_values(ascending=False)
@@ -42,4 +44,10 @@ if not area_counts.empty:
     st.plotly_chart(fig)
 else:
     st.warning("該当するデータがありません。")
+
+
+# In[ ]:
+
+
+
 
