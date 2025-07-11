@@ -42,7 +42,6 @@ else:
     ax.set_ylabel("店舗数", fontproperties=fontprop)
     ax.set_title(f"{selected_area} の店舗数", fontproperties=fontprop)
     plt.xticks(rotation=60, ha="right", fontproperties=fontprop)
-    plt.tight_layout()
     st.pyplot(fig)
 
 
